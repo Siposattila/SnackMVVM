@@ -9,6 +9,6 @@ namespace SnackMVVM.Services
 {
     public interface ISnackEditorService
     {
-        public void Edit(Trooper trooper);
+        public void Edit(Snack snack);
     }
 }

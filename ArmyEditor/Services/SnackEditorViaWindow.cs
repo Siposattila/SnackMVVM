@@ -10,9 +10,9 @@ namespace SnackMVVM.Services
 {
     public class SnackEditorViaWindow : ISnackEditorService
     {
-        public void Edit(Trooper trooper)
+        public void Edit(Snack snack)
         {
-            new TrooperEditor(trooper).ShowDialog();
+            new SnackEditor(snack).ShowDialog();
         }
     }
 }

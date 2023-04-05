@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SnackMVVM.ViewModels
 {
-    public class TrooperEditorWindowViewModel
+    public class SnackEditorWindowViewModel
     {
-        public Trooper Selected { get; set; }
-        public void Setup(Trooper trooper)
+        public Snack Selected { get; set; }
+        public void Setup(Snack trooper)
         {
             this.Selected = trooper;
         }
-        public TrooperEditorWindowViewModel()
+        public SnackEditorWindowViewModel()
         {
 
         }

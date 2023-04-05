@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace SnackMVVM.Logic
 {
     public class SnackLogic : ISnackLogic
     {
-        IList<Trooper> shelf;
+        private int income;
+        IList<Snack> shelf;
         IMessenger messenger;
         ISnackEditorService editorService;
 
@@ -21,29 +23,29 @@ namespace SnackMVVM.Logic
             this.editorService = e;            
         }
 
-        public void SetupCollections(IList<Trooper> shelf)
+        public void SetupCollections(IList<Snack> shelf)
         {
             this.shelf = shelf;
         }
 
-        public void AddToSnackShelf(Trooper trooper)
+        public void AddToSnackShelf(Snack snack)
         {
-            this.shelf.Add(trooper);
+            this.shelf.Add(snack);
             messenger.Send("Snack Added", "SnackInfo");
         }
 
-        public void RemoveFromSnackShelf(Trooper trooper)
+        public void RemoveFromSnackShelf(Snack snack)
         {
-            this.shelf.Remove(trooper);
+            this.shelf.Remove(snack);
             messenger.Send("Snack Removed", "SnackInfo");
         }
 
-        public void EditSnack(Trooper trooper)
+        public void EditSnack(Snack snack)
         {
-            this.editorService.Edit(trooper);
+            this.editorService.Edit(snack);
         }
 
-        public void BuySnack(Trooper trooper)
+        public void BuySnack(Snack snack)
         {
             throw new NotImplementedException();
         }
@@ -52,7 +54,7 @@ namespace SnackMVVM.Logic
         {
             get
             {
-                return army.Count == 0 ? 0 : army.Sum(t => t.Cost);
+                return this.income;
             }
         }
     }
