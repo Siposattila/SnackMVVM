@@ -7,10 +7,10 @@ namespace SnackMVVM.Logic
     {
         int Income { get; }
 
-        void AddToSnackShelf(Trooper trooper);
-        void RemoveFromSnackShelf(Trooper trooper);
-        void EditSnack(Trooper trooper);
-        void BuySnack(Trooper trooper);
-        void SetupCollections(IList<Trooper> shelf);
+        void AddToSnackShelf(Snack snack);
+        void RemoveFromSnackShelf(Snack snack);
+        void EditSnack(Snack snack);
+        void BuySnack(Snack snack);
+        void SetupCollections(IList<Snack> shelf);
     }
 }

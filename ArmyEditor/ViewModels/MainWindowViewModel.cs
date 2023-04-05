@@ -28,6 +28,7 @@ namespace SnackMVVM.ViewModels
             set { SetProperty(ref selectedFromShelf, value);
                 (AddSnack as RelayCommand).NotifyCanExecuteChanged();
                 (EditSnack as RelayCommand).NotifyCanExecuteChanged();
+                (BuySnack as RelayCommand).NotifyCanExecuteChanged();
 
             }
         }
@@ -63,18 +64,22 @@ namespace SnackMVVM.ViewModels
             };
             logic.SetupCollections(Shelf);
             AddSnack = new RelayCommand(
-                () => logic.AddToArmy(),
+                () => logic.AddToSnackShelf(new Snack()),
                 () => selectedFromShelf != null
                 );
             RemoveSnack = new RelayCommand(
-                () => logic.RemoveFromArmy(SelectedFromShelf),
+                () => logic.RemoveFromSnackShelf(SelectedFromShelf),
                 () => selectedFromShelf != null
                 );
             EditSnack = new RelayCommand(
-                () => logic.EditTrooper(SelectedFromShelf),
+                () => logic.EditSnack(SelectedFromShelf),
                 () => selectedFromShelf != null
                 );
-            Messenger.Register<MainWindowViewModel, string, string>(this, "TrooperInfo", (recipient, msg) =>
+            BuySnack = new RelayCommand(
+                () => logic.BuySnack(SelectedFromShelf),
+                () => selectedFromShelf != null
+                );
+            Messenger.Register<MainWindowViewModel, string, string>(this, "SnackInfo", (recipient, msg) =>
             {
                 OnPropertyChanged("Income");
             });
