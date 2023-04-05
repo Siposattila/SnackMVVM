@@ -17,6 +17,8 @@ namespace SnackMVVM.Logic
         IMessenger messenger;
         ISnackEditorService editorService;
 
+        public int Income { get { return this.income; } }
+
         public SnackLogic(IMessenger m, ISnackEditorService e )
         {
             this.messenger = m;
@@ -31,6 +33,7 @@ namespace SnackMVVM.Logic
         public void AddToSnackShelf(Snack snack)
         {
             this.shelf.Add(snack);
+            this.editorService.Edit(snack);
             messenger.Send("Snack Added", "SnackInfo");
         }
 
@@ -49,15 +52,8 @@ namespace SnackMVVM.Logic
         {
             int index = this.shelf.IndexOf(snack);
             this.shelf[index].Amount--;
-            this.income += snack.Amount;
-        }
-
-        public int Income
-        {
-            get
-            {
-                return this.income;
-            }
+            this.income += snack.Price;
+            messenger.Send("Snack Bought", "SnackInfo");
         }
     }
 }
