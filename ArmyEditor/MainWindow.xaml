@@ -32,7 +32,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Label HorizontalContentAlignment="Center" VerticalAlignment="Center" Padding="20" ContentStringFormat="Bevltel:\n{0} Ft" Content="{Binding TotalCost}"/>
+            <Label HorizontalContentAlignment="Center" VerticalAlignment="Center" Padding="20" ContentStringFormat="Bevltel:\n{0} Ft" Content="{Binding Income}"/>
             <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5" Content="Add" Command="{Binding AddSnack}"/>
             <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5" Content="Remove" Command="{Binding RemoveSnack}"/>
             <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5" Content="Edit" Command="{Binding EditSnack}"/>
