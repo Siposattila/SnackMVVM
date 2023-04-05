@@ -47,7 +47,9 @@ namespace SnackMVVM.Logic
 
         public void BuySnack(Snack snack)
         {
-            throw new NotImplementedException();
+            int index = this.shelf.IndexOf(snack);
+            this.shelf[index].Amount--;
+            this.income += snack.Amount;
         }
 
         public int Income
