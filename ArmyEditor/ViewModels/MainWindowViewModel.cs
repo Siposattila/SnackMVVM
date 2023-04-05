@@ -77,7 +77,7 @@ namespace SnackMVVM.ViewModels
                 );
             BuySnack = new RelayCommand(
                 () => logic.BuySnack(SelectedFromShelf),
-                () => selectedFromShelf != null
+                () => selectedFromShelf != null && selectedFromShelf.Amount > 0
                 );
             Messenger.Register<MainWindowViewModel, string, string>(this, "SnackInfo", (recipient, msg) =>
             {

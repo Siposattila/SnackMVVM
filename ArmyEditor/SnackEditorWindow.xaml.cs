@@ -30,7 +30,7 @@ namespace SnackMVVM
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach(var item in this.stack.Children)
+            foreach(var item in stack.Children)
                 if(item is TextBox t)
                     t.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             this.DialogResult = true;
