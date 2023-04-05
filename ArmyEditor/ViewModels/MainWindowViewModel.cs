@@ -27,6 +27,7 @@ namespace SnackMVVM.ViewModels
             get { return selectedFromShelf; }
             set { SetProperty(ref selectedFromShelf, value);
                 (AddSnack as RelayCommand).NotifyCanExecuteChanged();
+                (RemoveSnack as RelayCommand).NotifyCanExecuteChanged();
                 (EditSnack as RelayCommand).NotifyCanExecuteChanged();
                 (BuySnack as RelayCommand).NotifyCanExecuteChanged();
 
