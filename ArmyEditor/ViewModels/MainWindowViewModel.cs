@@ -17,38 +17,27 @@ namespace SnackMVVM.ViewModels
 {
     public class MainWindowViewModel: ObservableRecipient
     {
-        ISnackLogic logic;
-        public ObservableCollection<Trooper> Barracks { get; set; }
-        public ObservableCollection<Trooper> Army { get; set; }
-        private Trooper selectedFromBarracks;
+        IArmyLogic logic;
+        public ObservableCollection<Snack> Shelf { get; set; }
+        
+        private Snack selectedFromShelf;
 
-        public Trooper SelectedFromBarracks
+        public Snack SelectedFromShelf
         {
-            get { return selectedFromBarracks; }
-            set { SetProperty(ref selectedFromBarracks, value);
-                (AddToArmy as RelayCommand).NotifyCanExecuteChanged();
-                (EditTrooper as RelayCommand).NotifyCanExecuteChanged();
+            get { return selectedFromShelf; }
+            set { SetProperty(ref selectedFromShelf, value);
+                (AddSnack as RelayCommand).NotifyCanExecuteChanged();
+                (EditSnack as RelayCommand).NotifyCanExecuteChanged();
 
             }
         }
-        private Trooper selectedFromArmy;
 
-        public Trooper SelectedFromArmy
-        {
-            get { return selectedFromArmy; }
-            set { SetProperty(ref selectedFromArmy, value);
-                (RemoveFromArmy as RelayCommand).NotifyCanExecuteChanged();
-                
-            }
-        }
-        public ICommand AddToArmy { get; set; }
-        public ICommand RemoveFromArmy { get; set; }
-        public ICommand EditTrooper { get; set; }
+        public ICommand AddSnack { get; set; }
+        public ICommand RemoveSnack { get; set; }
+        public ICommand EditSnack { get; set; }
+        public ICommand BuySnack { get; set; }
 
-        public int TotalCost { get { return logic.TotalCost; } }
-        public double AVGPower { get { return logic.AVGPower; } }
-        public double AVGSpeed { get { return logic.AVGSpeed; } }
-
+        public int Income { get { return logic.TotalCost; } }
         public static bool IsInDesignMode
         {
             get
@@ -65,44 +54,29 @@ namespace SnackMVVM.ViewModels
         public MainWindowViewModel(ISnackLogic logic)
         {
             this.logic = logic;
-            
-            Barracks = new ObservableCollection<Trooper>()
-            {
-                new Trooper(){Type="Scout",Speed=9,Power=3},
-                new Trooper(){Type="Soldier",Speed=4,Power=8},
-                new Trooper(){Type="Pyro",Speed=6,Power=7},
-                new Trooper(){Type="Demoman",Speed=5,Power=8},
-                new Trooper(){Type="Heavy",Speed=3,Power=10},
-                new Trooper(){Type="Engineer",Speed=6,Power=2},
-                new Trooper(){Type="Medic",Speed=7,Power=2},
-                new Trooper(){Type="Sniper",Speed=6,Power=3},
-                new Trooper(){Type="Spy",Speed=7,Power=1},
 
-            };
-            Army = new ObservableCollection<Trooper>()
+            Shelf = new ObservableCollection<Snack>()
             {
-                Barracks[0].GetCopy(),
-                Barracks[1].GetCopy(),
-                Barracks[2].GetCopy(),
+                new Snack(){Name="Bal twix",Amount=20,Price=300},
+                new Snack(){Name="Jobb twix",Amount=20,Price=310},
+                new Snack(){Name="Moment",Amount=11,Price=280}
             };
-            logic.SetupCollections(Barracks, Army);
-            AddToArmy = new RelayCommand(
-                () => logic.AddToArmy(SelectedFromBarracks.GetCopy()),
-                () => selectedFromBarracks != null
+            logic.SetupCollections(Shelf);
+            AddSnack = new RelayCommand(
+                () => logic.AddToArmy(),
+                () => selectedFromShelf != null
                 );
-            RemoveFromArmy = new RelayCommand(
-                () => logic.RemoveFromArmy(SelectedFromArmy),
-                () => selectedFromArmy != null
+            RemoveSnack = new RelayCommand(
+                () => logic.RemoveFromArmy(SelectedFromShelf),
+                () => selectedFromShelf != null
                 );
-            EditTrooper = new RelayCommand(
-                () => logic.EditTrooper(SelectedFromBarracks),
-                () => selectedFromBarracks != null
+            EditSnack = new RelayCommand(
+                () => logic.EditTrooper(SelectedFromShelf),
+                () => selectedFromShelf != null
                 );
             Messenger.Register<MainWindowViewModel, string, string>(this, "TrooperInfo", (recipient, msg) =>
             {
-                OnPropertyChanged("TotalCost");
-                OnPropertyChanged("AVGPower");
-                OnPropertyChanged("AVGSpeed");
+                OnPropertyChanged("Income");
             });
                   
         }
