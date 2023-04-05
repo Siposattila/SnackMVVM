@@ -17,7 +17,7 @@ namespace SnackMVVM.ViewModels
 {
     public class MainWindowViewModel: ObservableRecipient
     {
-        IArmyLogic logic;
+        ISnackLogic logic;
         public ObservableCollection<Snack> Shelf { get; set; }
         
         private Snack selectedFromShelf;
@@ -37,7 +37,7 @@ namespace SnackMVVM.ViewModels
         public ICommand EditSnack { get; set; }
         public ICommand BuySnack { get; set; }
 
-        public int Income { get { return logic.TotalCost; } }
+        public int Income { get { return logic.Income; } }
         public static bool IsInDesignMode
         {
             get
