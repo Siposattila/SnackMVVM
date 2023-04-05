@@ -3,12 +3,6 @@ using SnackMVVM.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SnackMVVM
@@ -26,7 +20,7 @@ namespace SnackMVVM
                 .AddSingleton<ISnackEditorService, SnackEditorViaWindow>()
                 .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                 .BuildServiceProvider()
-);
+            );
         }
     }
 }
