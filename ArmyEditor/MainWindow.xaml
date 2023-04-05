@@ -7,7 +7,7 @@
         xmlns:helpers="clr-namespace:SnackMVVM.Helpers"
         xmlns:vms="clr-namespace:SnackMVVM.ViewModels"
         mc:Ignorable="d"
-        Title="Army Editor" Height="400" Width="600">
+        Title="Snack Editor" Height="400" Width="600">
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -22,12 +22,18 @@
         <ListBox Grid.Column="0" ItemsSource="{Binding Shelf}" SelectedItem="{Binding SelectedFromShelf}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Name}"/>
-                        <Label ContentStringFormat="​{0}Ft" Content="{Binding Price}"/>
-                        <Label Content="{Binding Amount}"/>
-                        <ProgressBar Height="10" Margin="10" Maximum="20" Value="{Binding Amount}" Foreground="{Binding Amount, Converter={StaticResource colorconverter}}"/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Name}"/>
+                        <Label Grid.Column="1" ContentStringFormat="​{0}Ft" Content="{Binding Price}"/>
+                        <Label Grid.Column="2" Content="{Binding Amount}"/>
+                        <ProgressBar Grid.Column="3" Height="10" Margin="10" Maximum="20" Value="{Binding Amount}" Foreground="{Binding Amount, Converter={StaticResource colorconverter}}"/>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
