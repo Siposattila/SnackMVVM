@@ -17,7 +17,7 @@ namespace SnackMVVM.ViewModels
 {
     public class MainWindowViewModel: ObservableRecipient
     {
-        IArmyLogic logic;
+        ISnackLogic logic;
         public ObservableCollection<Trooper> Barracks { get; set; }
         public ObservableCollection<Trooper> Army { get; set; }
         private Trooper selectedFromBarracks;
@@ -58,11 +58,11 @@ namespace SnackMVVM.ViewModels
             }
         }
         public MainWindowViewModel()
-            :this(IsInDesignMode ? null : Ioc.Default.GetService<IArmyLogic>())
+            :this(IsInDesignMode ? null : Ioc.Default.GetService<ISnackLogic>())
         {
 
         }
-        public MainWindowViewModel(IArmyLogic logic)
+        public MainWindowViewModel(ISnackLogic logic)
         {
             this.logic = logic;
             

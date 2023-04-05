@@ -22,8 +22,8 @@ namespace SnackMVVM
         {
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
-                .AddSingleton<IArmyLogic, ArmyLogic>()
-                .AddSingleton<ITrooperEditorService, TrooperEditorViaWindow>()
+                .AddSingleton<ISnackLogic, ArmyLogic>()
+                .AddSingleton<ITrooperEditorService, SnackEditorViaWindow>()
                 .AddSingleton<IMessenger>(WeakReferenceMessenger.Default)
                 .BuildServiceProvider()
 );

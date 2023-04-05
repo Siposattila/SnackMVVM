@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnackMVVM.Services
 {
-    public interface ITrooperEditorService
+    public interface ISnackEditorService
     {
         public void Edit(Trooper trooper);
     }
