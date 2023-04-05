@@ -15,13 +15,13 @@ namespace SnackMVVM.Helpers
         {
             double num = double.Parse(value.ToString());
             if (num <= 3)
-            {
                 return Brushes.Red;
-            }
-            else if (num <= 7)
-            {
+            else if (num <= 8)
+                return Brushes.Orange;
+            else if (num <= 13)
                 return Brushes.Yellow;
-            }
+            else if (num <= 18)
+                return Brushes.GreenYellow;
             else
                 return Brushes.Green;
         }
