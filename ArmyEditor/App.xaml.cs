@@ -1,5 +1,5 @@
-﻿using ArmyEditor.Logic;
-using ArmyEditor.Services;
+﻿using SnackMVVM.Logic;
+using SnackMVVM.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Messaging;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ArmyEditor
+namespace SnackMVVM
 {
     /// <summary>
     /// Interaction logic for App.xaml

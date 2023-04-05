@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace ArmyEditor.Helpers
+namespace SnackMVVM.Helpers
 {
     class NumberToColorConverter : IValueConverter
     {

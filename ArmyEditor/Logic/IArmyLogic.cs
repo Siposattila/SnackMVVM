@@ -1,7 +1,7 @@
-﻿using ArmyEditor.Models;
+﻿using SnackMVVM.Models;
 using System.Collections.Generic;
 
-namespace ArmyEditor.Logic
+namespace SnackMVVM.Logic
 {
     public interface IArmyLogic
     {

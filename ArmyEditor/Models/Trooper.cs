@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArmyEditor.Models
+namespace SnackMVVM.Models
 {
     public class Trooper : ObservableObject
     {

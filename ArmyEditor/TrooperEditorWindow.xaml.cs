@@ -1,5 +1,5 @@
-﻿using ArmyEditor.Models;
-using ArmyEditor.ViewModels;
+﻿using SnackMVVM.Models;
+using SnackMVVM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ArmyEditor
+namespace SnackMVVM
 {
     /// <summary>
     /// Interaction logic for TrooperEditor.xaml

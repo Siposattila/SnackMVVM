@@ -1,5 +1,5 @@
-﻿using ArmyEditor.Models;
-using ArmyEditor.Services;
+﻿using SnackMVVM.Models;
+using SnackMVVM.Services;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArmyEditor.Logic
+namespace SnackMVVM.Logic
 {
     public class ArmyLogic : IArmyLogic
     {

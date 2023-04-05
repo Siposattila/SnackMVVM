@@ -1,5 +1,5 @@
-﻿using ArmyEditor.Logic;
-using ArmyEditor.Models;
+﻿using SnackMVVM.Logic;
+using SnackMVVM.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace ArmyEditor.ViewModels
+namespace SnackMVVM.ViewModels
 {
     public class MainWindowViewModel: ObservableRecipient
     {
