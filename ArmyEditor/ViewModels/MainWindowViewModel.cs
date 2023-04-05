@@ -63,15 +63,15 @@ namespace SnackMVVM.ViewModels
             };
             logic.SetupCollections(Shelf);
             AddSnack = new RelayCommand(
-                () => logic.AddToArmy(),
+                () => logic.AddToSnackShelf(),
                 () => selectedFromShelf != null
                 );
             RemoveSnack = new RelayCommand(
-                () => logic.RemoveFromArmy(SelectedFromShelf),
+                () => logic.RemoveFromSnackShelf(SelectedFromShelf),
                 () => selectedFromShelf != null
                 );
             EditSnack = new RelayCommand(
-                () => logic.EditTrooper(SelectedFromShelf),
+                () => logic.EditSnack(SelectedFromShelf),
                 () => selectedFromShelf != null
                 );
             Messenger.Register<MainWindowViewModel, string, string>(this, "TrooperInfo", (recipient, msg) =>
