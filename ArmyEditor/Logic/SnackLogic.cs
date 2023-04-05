@@ -33,6 +33,7 @@ namespace SnackMVVM.Logic
         public void AddToSnackShelf(Snack snack)
         {
             this.shelf.Add(snack);
+            this.editorService.Edit(snack);
             messenger.Send("Snack Added", "SnackInfo");
         }
 
