@@ -7,7 +7,7 @@
         xmlns:helpers="clr-namespace:SnackMVVM.Helpers"
         xmlns:vms="clr-namespace:SnackMVVM.ViewModels"
         mc:Ignorable="d"
-        Title="Army Editor" Height="450" Width="850">
+        Title="Army Editor" Height="400" Width="600">
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -16,61 +16,28 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Barracks}" SelectedItem="{Binding SelectedFromBarracks}" HorizontalContentAlignment="Stretch">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderThickness="1" BorderBrush="Black">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold"  ContentStringFormat="Type: {0}" Content="{Binding Type}"/>
-                        <Label Grid.Row="1" Grid.Column="0" ContentStringFormat="Power: {0}" Content="{Binding Power}"/>
-                        <ProgressBar Grid.Row="2" Grid.Column="0" Height="10" Margin="10" Maximum="10" Value="{Binding Power}" Foreground="{Binding Power, Converter={StaticResource colorconverter}}"/>
-                        <Label Grid.Row="1" Grid.Column="1" ContentStringFormat="Speed: {0}" Content="{Binding Speed}"/>
-                            <ProgressBar Grid.Row="2" Grid.Column="1" Height="10" Margin="10" Maximum="10" Value="{Binding Speed}" Foreground="{Binding Speed, Converter={StaticResource colorconverter}}"/>
-
-
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Label HorizontalContentAlignment="Center" VerticalAlignment="Center"  FontSize="14" ContentStringFormat="Cost: {0} $" Content="{Binding TotalCost}"/>
-            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="10" Padding="10" FontSize="14" Content="Add to Army" Command="{Binding AddToArmy}"/>
-            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="10" Padding="10" FontSize="14" Content="Remove From Army" Command="{Binding RemoveFromArmy}"/>
-            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="10" Padding="10" FontSize="14" Content="Edit Trooper" Command="{Binding EditTrooper}"/>
-            <Label HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="14" ContentStringFormat="Power: {0}" Content="{Binding AVGPower}"/>
-            <ProgressBar Height="20" Margin="10" Maximum="10" Value="{Binding AVGPower, Mode=OneWay}"
-                         Foreground="{Binding AVGPower, Converter={StaticResource colorconverter}, Mode=OneWay}"/>
-            <Label HorizontalContentAlignment="Center" VerticalAlignment="Center"  FontSize="14" ContentStringFormat="Speed: {0}" Content="{Binding AVGSpeed}"/>
-            <ProgressBar Height="20" Margin="10" Maximum="10" Value="{Binding AVGSpeed, Mode=OneWay}"
-                         Foreground="{Binding AVGSpeed, Converter={StaticResource colorconverter}, Mode=OneWay}"/>
-
-        </StackPanel>
-        <ListBox Grid.Column="2" ItemsSource="{Binding Army}" SelectedItem="{Binding SelectedFromArmy}">
+        <ListBox Grid.Column="0" ItemsSource="{Binding Shelf}" SelectedItem="{Binding SelectedFromShelf}" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Type}"/>
-                        <Label Content="{Binding Power}" ContentStringFormat="[{0}]"/>
-                        <Label Content="{Binding Speed}" ContentStringFormat="[{0}]"/>
+                        <Label Content="{Binding Name}"/>
+                        <Label ContentStringFormat="​{0}Ft" Content="{Binding Price}"/>
+                        <Label Content="{Binding Amount}"/>
+                        <ProgressBar Height="10" Margin="10" Maximum="20" Value="{Binding Amount}" Foreground="{Binding Amount, Converter={StaticResource colorconverter}}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
-
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Label HorizontalContentAlignment="Center" VerticalAlignment="Center" Padding="20" ContentStringFormat="Bevltel:\n{0} Ft" Content="{Binding TotalCost}"/>
+            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5" Content="Add" Command="{Binding AddSnack}"/>
+            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5" Content="Remove" Command="{Binding RemoveSnack}"/>
+            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5" Content="Edit" Command="{Binding EditSnack}"/>
+            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5" Content="Save" Command="{Binding }"/>
+            <Button HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="5,0,5,0" Padding="10" Content="BuySnacks" Command="{Binding BuySnack}"/>
+        </StackPanel>
     </Grid>
 </Window>
